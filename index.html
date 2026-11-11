@@ -41,6 +41,63 @@
   button{font-family:inherit;cursor:pointer;border:none;background:none}
   input{font-family:inherit}
 
+  /* ===== BANNER DA LOJA (NOVO) ===== */
+  .store-banner{
+    background: linear-gradient(135deg, var(--green-900) 0%, var(--green-700) 55%, var(--green-600) 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 20px;
+    cursor: pointer;
+  }
+  .store-banner::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 15% 30%, rgba(250,204,21,.18), transparent 45%),
+      radial-gradient(circle at 85% 70%, rgba(34,197,94,.22), transparent 50%);
+    pointer-events:none;
+  }
+  .store-banner img{
+    max-width: 100%;
+    max-height: 280px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,.35);
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s;
+    position: relative;
+    z-index: 1;
+  }
+  .store-banner:hover img{
+    transform: scale(1.025);
+    box-shadow: 0 12px 36px rgba(0,0,0,.45);
+  }
+  .store-banner-tag{
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    background: var(--yellow-500);
+    color: var(--green-900);
+    font-size: .72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 6px 12px;
+    border-radius: 999px;
+    z-index: 2;
+    box-shadow: 0 4px 14px rgba(250,204,21,.45);
+  }
+  @media (max-width:768px){
+    .store-banner{ padding: 12px 10px; }
+    .store-banner img{ max-height: 180px; }
+    .store-banner-tag{ font-size:.65rem; padding: 4px 10px; top:8px; left:10px; }
+  }
+
   /* TOP BAR */
   .topbar{background:var(--green-900);color:#fff;font-size:.82rem;padding:8px 0}
   .topbar-inner{max-width:1280px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
@@ -253,6 +310,17 @@
 </style>
 </head>
 <body>
+
+<!-- =========================================================
+     BANNER DA LOJA (foto alcinda.png do repositório)
+     ========================================================= -->
+<div class="store-banner" onclick="scrollToProducts()" role="button" tabindex="0" aria-label="Foto da loja - ir para ofertas">
+  <span class="store-banner-tag">🏪 Nossa loja</span>
+  <img
+    src="alcinda.png"
+    alt="Supermercado Alcinda - Jardim Baronesa, Taubaté"
+    onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/tvvalenarede/supermercadoalcinda/main/alcinda.png'">
+</div>
 
 <!-- TOP BAR -->
 <div class="topbar">
